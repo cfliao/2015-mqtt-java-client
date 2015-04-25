@@ -15,7 +15,7 @@ public class MqttPublisherDemo
 
     public static void main(String[] args)
     {
-        String clientId = "cfliao";
+        String clientId = "cfliao-pub";
         MemoryPersistence persistence = new MemoryPersistence();
         try
         {
@@ -32,7 +32,7 @@ public class MqttPublisherDemo
             message.setQos(0);// qos set to 0
             
             // publish a message to a Topic: "testtopic"
-            sampleClient.publish("testtopic", message);
+            sampleClient.publish("home/CONTEXT", message);
             System.out.println("Message published");
             
             // disconnect

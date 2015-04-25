@@ -10,7 +10,7 @@ public class MqttSubscriberDemo
 
     public static void main(String[] args)
     {
-        String clientId = "cfliao";
+        String clientId = "cfliao-sub";
         MemoryPersistence persistence = new MemoryPersistence();
         try
         {
@@ -23,25 +23,25 @@ public class MqttSubscriberDemo
             conToken.waitForCompletion();
 
             // subscribe
-            String topicName = "testtopic";
+            String topicName = "home/CONTEXT";
             System.out.println("Subscribing to topic \"" + topicName + "\" qos " + 0);
             IMqttToken subToken = sampleClient.subscribe(topicName, 0, null, null);
             subToken.waitForCompletion();
             System.out.println("Subscribed to topic \"" + topicName);
 
             // continue waiting for messages until the Enter is pressed
-            //System.out.println("Press <Enter> to exit");
-            //try
-            //{
-            //    System.in.read();
-            //}
-            //catch (Exception e)
-            //{
+            System.out.println("Press <Enter> to exit");
+            try
+            {
+                System.in.read();
+            }
+            catch (Exception e)
+            {
                 // If we can't read we'll just exit
-            //}
+            }
 
             // disconnect
-            //sampleClient.disconnect();
+            sampleClient.disconnect();
             //System.out.println("Disconnected");
         }
         catch (Exception ex)
